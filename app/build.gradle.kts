@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -58,4 +59,14 @@ dependencies {
         exclude("com.android.support")
     }
     implementation ("androidx.activity:activity-ktx:${project.ext.get("activityKtxVersion")}")
+    // Hilt
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-compiler:2.48")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
