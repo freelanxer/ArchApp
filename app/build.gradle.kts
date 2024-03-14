@@ -36,6 +36,7 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -50,7 +51,8 @@ dependencies {
     // retrofit
     implementation("com.squareup.retrofit2:converter-moshi:${project.ext.get("retrofitVersion")}")
     implementation("com.squareup.moshi:moshi:${project.ext.get("moshiVersion")}")
-    kapt ("com.squareup.moshi:moshi-kotlin-codegen:${project.ext.get("moshiVersion")}")
+    implementation("com.squareup.moshi:moshi-kotlin:${project.ext.get("moshiVersion")}")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:${project.ext.get("moshiVersion")}")
     implementation("com.squareup.okhttp3:logging-interceptor:${project.ext.get("okhttpInterceptorVersion")}")
     implementation("com.github.bumptech.glide:glide:${project.ext.get("glid")}") {
         exclude("com.android.support")
