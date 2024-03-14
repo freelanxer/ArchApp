@@ -9,6 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 private const val contentType = "Content-Type"
 private const val contentTypeValue = "application/json"
@@ -16,7 +17,7 @@ private const val timeoutConnect = 30   //In seconds
 private const val timeoutRead = 30      //In seconds
 private const val BASE_URL = "https://api.openf1.org/v1/"
 
-class ServiceGenerator constructor() {
+class ServiceGenerator @Inject constructor() {
     private val okHttpBuilder = OkHttpClient.Builder()
     private val retrofit: Retrofit
 

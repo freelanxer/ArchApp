@@ -7,9 +7,12 @@ import com.freelanxer.archapp.data.DataRepositoryResource
 import com.freelanxer.archapp.data.Resource
 import com.freelanxer.archapp.data.dto.SessionListModel
 import com.freelanxer.archapp.ui.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainViewModel constructor(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val dataRepository: DataRepositoryResource,
 ): BaseViewModel() {
 

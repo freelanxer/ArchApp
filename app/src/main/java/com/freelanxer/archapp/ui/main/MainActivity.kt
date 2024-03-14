@@ -9,7 +9,9 @@ import com.freelanxer.archapp.data.dto.SessionListModel
 import com.freelanxer.archapp.databinding.ActivityMainBinding
 import com.freelanxer.archapp.ui.base.BaseActivity
 import com.freelanxer.archapp.utils.observe
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     private val mainViewModel: MainViewModel by viewModels()

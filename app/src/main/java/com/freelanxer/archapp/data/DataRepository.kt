@@ -5,9 +5,10 @@ import com.freelanxer.archapp.data.remote.RemoteData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class DataRepository constructor(
+class DataRepository @Inject constructor(
     val remoteRepository: RemoteData,
     val ioDispatcher: CoroutineContext,
 ): DataRepositoryResource {

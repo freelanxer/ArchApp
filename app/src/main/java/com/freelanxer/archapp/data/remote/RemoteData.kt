@@ -7,8 +7,9 @@ import com.freelanxer.archapp.data.error.NETWORK_ERROR
 import com.freelanxer.archapp.data.remote.service.OpenF1Service
 import retrofit2.Response
 import java.io.IOException
+import javax.inject.Inject
 
-class RemoteData constructor(
+class RemoteData @Inject constructor(
     val serviceGenerator: ServiceGenerator,
 ): RemoteDataSource {
 
