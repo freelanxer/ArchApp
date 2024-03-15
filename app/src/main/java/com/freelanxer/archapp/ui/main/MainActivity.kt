@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import com.freelanxer.archapp.TAG
 import com.freelanxer.archapp.data.Resource
+import com.freelanxer.archapp.data.dto.DriverListModel
 import com.freelanxer.archapp.data.dto.SessionListModel
 import com.freelanxer.archapp.databinding.ActivityMainBinding
 import com.freelanxer.archapp.ui.base.BaseActivity
@@ -44,8 +45,23 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    private fun handleDriverList(status: Resource<DriverListModel>) {
+        when(status) {
+            is Resource.Loading -> Log.d(TAG, "handleDriverList: $status")
+            is Resource.DataError -> Log.d(TAG, "handleDriverList: $status")
+            is Resource.Success -> {
+                status.data?.let {
+                    for (driver in it.driverList) {
+                        Log.d(TAG, "handleDriverList: ${driver.fullName}")
+                    }
+                }
+            }
+        }
+    }
+
     override fun observeViewModel() {
         observe(mainViewModel.sessionListLiveData, ::handleSessionList)
+        observe(mainViewModel.driverListLiveData, ::handleDriverList)
     }
 
 }

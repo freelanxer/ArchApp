@@ -1,6 +1,8 @@
 package com.freelanxer.archapp.data.remote
 
 import com.freelanxer.archapp.data.Resource
+import com.freelanxer.archapp.data.dto.Driver
+import com.freelanxer.archapp.data.dto.DriverListModel
 import com.freelanxer.archapp.data.dto.Session
 import com.freelanxer.archapp.data.dto.SessionListModel
 import com.freelanxer.archapp.data.error.NETWORK_ERROR
@@ -22,6 +24,17 @@ class RemoteData @Inject constructor(
             else -> {
                 Resource.DataError(errorCode = response as Int)
             }
+        }
+    }
+
+    override suspend fun requestDriver(
+        sessionKey: Int?,
+        driverNumber: Int?
+    ): Resource<DriverListModel> {
+        val f1Service = serviceGenerator.createService(OpenF1Service::class.java)
+        return when(val response = processCall { f1Service.getDriver(sessionKey, driverNumber) }) {
+            is List<*> -> Resource.Success(data = DriverListModel(response as ArrayList<Driver>))
+            else -> Resource.DataError(errorCode = response as Int)
         }
     }
 
