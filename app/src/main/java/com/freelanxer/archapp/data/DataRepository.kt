@@ -13,9 +13,9 @@ class DataRepository @Inject constructor(
     val ioDispatcher: CoroutineContext,
 ): DataRepositoryResource {
 
-    override suspend fun requestSession(): Flow<Resource<SessionListModel>> {
+    override suspend fun requestSession(year: Int?): Flow<Resource<SessionListModel>> {
         return flow {
-            emit(remoteRepository.requestSession())
+            emit(remoteRepository.requestSession(year))
         }.flowOn(ioDispatcher)
     }
 

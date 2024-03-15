@@ -16,13 +16,13 @@ class MainViewModel @Inject constructor(
     private val dataRepository: DataRepositoryResource,
 ): BaseViewModel() {
 
-    val sessionListLiveDataPrivate = MutableLiveData<Resource<SessionListModel>>()
+    private val sessionListLiveDataPrivate = MutableLiveData<Resource<SessionListModel>>()
     val sessionListLiveData: LiveData<Resource<SessionListModel>> get() = sessionListLiveDataPrivate
 
-    fun getSession() {
+    fun getSession(year: Int? = null) {
         viewModelScope.launch {
             sessionListLiveDataPrivate.value = Resource.Loading()
-            dataRepository.requestSession().collect() {
+            dataRepository.requestSession(year).collect() {
                 sessionListLiveDataPrivate.value = it
             }
         }

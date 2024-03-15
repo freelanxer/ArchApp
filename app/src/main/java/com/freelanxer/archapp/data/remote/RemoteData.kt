@@ -13,9 +13,9 @@ class RemoteData @Inject constructor(
     val serviceGenerator: ServiceGenerator,
 ): RemoteDataSource {
 
-    override suspend fun requestSession(): Resource<SessionListModel> {
+    override suspend fun requestSession(year: Int?): Resource<SessionListModel> {
         val f1Service = serviceGenerator.createService(OpenF1Service::class.java)
-        return when(val response = processCall(f1Service::getSession)) {
+        return when(val response = processCall {f1Service.getSession(year)}) {
             is List<*> -> {
                 Resource.Success(data = SessionListModel(response as ArrayList<Session>))
             }

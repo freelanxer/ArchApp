@@ -4,5 +4,5 @@ import com.freelanxer.archapp.data.Resource
 import com.freelanxer.archapp.data.dto.SessionListModel
 
 interface RemoteDataSource {
-    suspend fun requestSession(): Resource<SessionListModel>
+    suspend fun requestSession(year: Int? = null): Resource<SessionListModel>
 }
