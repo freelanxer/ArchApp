@@ -8,4 +8,11 @@
     <dimen name="text_size_22">22sp</dimen>
     <dimen name="text_size_24">24sp</dimen>
     <dimen name="text_size_26">26sp</dimen>
+
+    <dimen name="activity_horizontal_padding">20dp</dimen>
+
+    <!--Card View-->
+    <dimen name="card_view_radius_10">10dp</dimen>
+    <dimen name="card_view_radius_15">15dp</dimen>
+
 </resources>

@@ -66,6 +66,8 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.48")
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
+    // Coil
+    implementation("io.coil-kt:coil:2.6.0")
 }
 
 // Allow references to generated code

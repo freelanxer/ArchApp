@@ -3,4 +3,6 @@
 
     <string name="feature_sessions">Sessions</string>
 
+    <string name="session_gp_param">%s GP</string>
+
 </resources>

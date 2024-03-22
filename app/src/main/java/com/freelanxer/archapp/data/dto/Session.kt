@@ -1,6 +1,10 @@
 package com.freelanxer.archapp.data.dto
 
+import android.content.Context
+import com.freelanxer.archapp.R
 import com.squareup.moshi.Json
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 /**
  * F1 Session
@@ -32,4 +36,16 @@ data class Session(
     @Json(name = "circuit_short_name")
     val circuitShortName: String,
     val year: Int,
-)
+) {
+    private val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
+    private val sdfDate = SimpleDateFormat("dd MMM", Locale.ENGLISH)
+    fun getSessionDate(): String {
+        val date = sdf.parse(dateStart)
+        return if (date == null) "" else sdfDate.format(date)
+    }
+
+    fun getCircuitName(context: Context): String {
+        return String.format(context.getString(R.string.session_gp_param), circuitShortName)
+    }
+}
+
