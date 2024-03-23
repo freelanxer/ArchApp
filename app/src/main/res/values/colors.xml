@@ -6,4 +6,17 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#3F51B5</color>
+
+    <!--Team color-->
+    <color name="team_red_bull">#3671C6</color>
+    <color name="team_ferrari">#E80020</color>
+    <color name="team_mclaren">#FF8000</color>
+    <color name="team_mercedes">#27F4D2</color>
+    <color name="team_aston_martin">#229971</color>
+    <color name="team_haas">#B6BABD</color>
+    <color name="team_williams">#64C4FF</color>
+    <color name="team_kick_sauber">#52E252</color>
+    <color name="team_rb">#6692FF</color>
+    <color name="team_alpine">#0093CC</color>
+
 </resources>

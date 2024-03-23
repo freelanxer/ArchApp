@@ -1,7 +1,21 @@
 <resources>
     <string name="app_name">ArchApp</string>
 
+    <!--Feature menu-->
     <string name="feature_sessions">Sessions</string>
+    <string name="feature_drivers">Drivers</string>
+
+    <!--Team name-->
+    <string name="team_red_bull">Red Bull Racing</string>
+    <string name="team_ferrari">Ferrari</string>
+    <string name="team_mclaren">McLaren</string>
+    <string name="team_mercedes">Mercedes</string>
+    <string name="team_aston_martin">Aston Martin</string>
+    <string name="team_haas">Haas F1 Team</string>
+    <string name="team_williams">Williams</string>
+    <string name="team_kick_sauber">Kick Sauber</string>
+    <string name="team_rb">RB</string>
+    <string name="team_alpine">Alpine</string>
 
     <string name="session_gp_param">%s GP</string>
 
