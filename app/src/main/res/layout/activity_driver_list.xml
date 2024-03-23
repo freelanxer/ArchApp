@@ -19,7 +19,9 @@
             android:id="@+id/driver_list_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            android:paddingHorizontal="20dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/list_item_driver"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
