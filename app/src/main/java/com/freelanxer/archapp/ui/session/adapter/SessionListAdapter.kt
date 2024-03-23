@@ -52,6 +52,7 @@ class SessionListAdapter(
             binding.circuitTv.text = session.getCircuitName(itemView.context)
             binding.countryTv.text = session.countryName
             binding.sessionNameTv.text = session.sessionName
+            binding.timeTv.text = session.getSessionTime()
             binding.circuitIv.load(getCircuitImage(session.circuitKey))
         }
 

@@ -2,6 +2,7 @@ package com.freelanxer.archapp.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.freelanxer.archapp.R
@@ -36,7 +37,7 @@ class HomeActivity: BaseActivity() {
     override fun initViewBinding() {
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.headerView.titleTv.setText(R.string.app_name);
+        binding.headerView.titleTv.visibility = View.GONE
     }
 
     override fun observeViewModel() {

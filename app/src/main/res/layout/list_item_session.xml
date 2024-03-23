@@ -10,6 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
         android:paddingHorizontal="20dp"
         android:paddingVertical="10dp">
 
@@ -48,20 +49,27 @@
             android:id="@+id/circuit_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            tools:src="@drawable/ic_circuit_002"/>
+            android:layout_centerInParent="true"
+            tools:src="@drawable/ic_circuit_002" />
 
         <TextView
             android:id="@+id/session_name_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_alignEnd="@id/circuit_iv"
+            android:layout_alignParentEnd="true"
             android:textStyle="bold"
             android:textSize="@dimen/text_size_18"
-            android:rotation="-20"
             tools:text="Qualifying"/>
+
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/text_size_14"
+            tools:text="16:30"/>
 
     </RelativeLayout>
 

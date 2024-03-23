@@ -3,6 +3,7 @@ package com.freelanxer.archapp.ui.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.freelanxer.archapp.R
 import com.freelanxer.archapp.data.dto.FeatureMenuItem
 import com.freelanxer.archapp.databinding.ListItemMenuBinding
 import com.freelanxer.archapp.ui.home.HomeViewModel
@@ -44,5 +45,12 @@ class HomeMenuAdapter(
 class ViewHolder(private val binding: ListItemMenuBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(menuItem: FeatureMenuItem) {
         binding.nameTv.text = menuItem.name
+        binding.backgroundIv.setImageResource(
+            when (menuItem.id) {
+                0 -> R.drawable.ic_menu_background_01
+                1 -> R.drawable.ic_menu_background_02
+                else -> R.drawable.ic_menu_background_02
+            }
+        )
     }
 }

@@ -39,9 +39,15 @@ data class Session(
 ) {
     private val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
     private val sdfDate = SimpleDateFormat("dd MMM", Locale.ENGLISH)
+    private val sdfTime = SimpleDateFormat("HH:mm", Locale.ENGLISH)
     fun getSessionDate(): String {
         val date = sdf.parse(dateStart)
         return if (date == null) "" else sdfDate.format(date)
+    }
+
+    fun getSessionTime(): String {
+        val date = sdf.parse(dateStart)
+        return if (date == null) "" else sdfTime.format(date)
     }
 
     fun getCircuitName(context: Context): String {
