@@ -21,7 +21,7 @@ class SessionListAdapter(
 
     private val listener = object: Listener {
         override fun onSessionClicked(session: Session) {
-
+            sessionViewModel.onSessionClicked(session)
         }
     }
 

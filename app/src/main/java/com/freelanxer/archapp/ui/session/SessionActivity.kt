@@ -1,5 +1,6 @@
 package com.freelanxer.archapp.ui.session
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
@@ -11,6 +12,7 @@ import com.freelanxer.archapp.data.dto.Session
 import com.freelanxer.archapp.data.dto.SessionListModel
 import com.freelanxer.archapp.databinding.ActivitySessionBinding
 import com.freelanxer.archapp.ui.base.BaseActivity
+import com.freelanxer.archapp.ui.driver.DriverListActivity
 import com.freelanxer.archapp.ui.session.adapter.SessionListAdapter
 import com.freelanxer.archapp.utils.observe
 import dagger.hilt.android.AndroidEntryPoint
@@ -66,7 +68,10 @@ class SessionActivity: BaseActivity() {
     }
 
     private fun onSessionClicked(session: Session) {
-
+        val intent = Intent(this, DriverListActivity::class.java).apply {
+            putExtra(DriverListActivity.EXTRA_SESSION_KEY, session.sessionKey)
+        }
+        startActivity(intent)
     }
 
     override fun observeViewModel() {

@@ -23,6 +23,10 @@ class SessionViewModel @Inject constructor(
     private val sessionListLiveDataPrivate = MutableLiveData<Resource<SessionListModel>>()
     val sessionListLiveData: LiveData<Resource<SessionListModel>> get() = sessionListLiveDataPrivate
 
+    fun onSessionClicked(session: Session) {
+        sessionClickedLiveDataPrivate.value = session
+    }
+
     fun getSessionList(year: Int? = null) {
         viewModelScope.launch {
             sessionListLiveDataPrivate.value = Resource.Loading()
