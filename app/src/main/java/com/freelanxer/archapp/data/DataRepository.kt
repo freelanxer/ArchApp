@@ -1,6 +1,7 @@
 package com.freelanxer.archapp.data
 
 import com.freelanxer.archapp.data.dto.DriverListModel
+import com.freelanxer.archapp.data.dto.PositionListModel
 import com.freelanxer.archapp.data.dto.SessionListModel
 import com.freelanxer.archapp.data.remote.RemoteData
 import kotlinx.coroutines.flow.Flow
@@ -26,6 +27,15 @@ class DataRepository @Inject constructor(
     ): Flow<Resource<DriverListModel>> {
         return flow {
             emit(remoteRepository.requestDriver(sessionKey, driverNumber))
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun requestPosition(
+        sessionKey: Int?,
+        driverNumber: Int?
+    ): Flow<Resource<PositionListModel>> {
+        return flow {
+            emit(remoteRepository.requestPosition(sessionKey, driverNumber))
         }.flowOn(ioDispatcher)
     }
 
