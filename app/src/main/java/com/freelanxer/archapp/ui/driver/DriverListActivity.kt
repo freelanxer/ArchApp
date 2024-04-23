@@ -9,6 +9,7 @@ import com.freelanxer.archapp.TAG
 import com.freelanxer.archapp.data.Resource
 import com.freelanxer.archapp.data.dto.Driver
 import com.freelanxer.archapp.data.dto.DriverListModel
+import com.freelanxer.archapp.data.dto.PositionListModel
 import com.freelanxer.archapp.databinding.ActivityDriverListBinding
 import com.freelanxer.archapp.ui.base.BaseActivity
 import com.freelanxer.archapp.ui.driver.adapter.DriverListAdapter
@@ -41,6 +42,7 @@ class DriverListActivity: BaseActivity() {
         }
 
         driverListViewModel.getDriverList(sessionKey)
+
     }
 
     override fun initViewBinding() {
@@ -54,9 +56,7 @@ class DriverListActivity: BaseActivity() {
             is Resource.Loading -> Log.d(TAG, "handleDriverList: $status")
             is Resource.DataError -> Log.d(TAG, "handleDriverList: $status")
             is Resource.Success -> {
-                status.data?.let {
-                    driverAdapter.setData(it.driverList)
-                }
+                driverListViewModel.getPositionList(sessionKey)
             }
         }
     }
@@ -65,9 +65,33 @@ class DriverListActivity: BaseActivity() {
 
     }
 
+    private fun handlePositionList(status: Resource<PositionListModel>) {
+        when (status) {
+            is Resource.Loading -> Log.d(TAG, "handlePositionList: $status")
+            is Resource.DataError -> Log.d(TAG, "handlePositionList: $status")
+            is Resource.Success -> {
+                val sortedList = mutableListOf<Driver>()
+                val map = mutableMapOf<Int, Int>()
+                status.data?.positionList?.forEach { positionItem ->
+                    if (positionItem.position != null && positionItem.driverNumber != null) {
+                        map[positionItem.position] = positionItem.driverNumber
+                    }
+                }
+                map.toSortedMap().toList().forEach { driverNumber ->
+                    driverListViewModel.driverList?.find { it.driverNumber ==  driverNumber.second}?.let {
+                        sortedList.add(it)
+                    }
+                }.also {
+                    driverAdapter.setData(sortedList)
+                }
+            }
+        }
+    }
+
     override fun observeViewModel() {
         observe(driverListViewModel.driverListLiveData, ::handleDriverList)
         observe(driverListViewModel.driverClickedLiveData, ::onDriverClicked)
+        observe(driverListViewModel.positionListLiveData, ::handlePositionList)
     }
 
 }
