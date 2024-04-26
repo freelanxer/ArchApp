@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.freelanxer.archapp.R
+import com.freelanxer.archapp.data.dto.F1Team
 import com.freelanxer.archapp.data.dto.Driver
 import com.freelanxer.archapp.databinding.ListItemDriverBinding
 import com.freelanxer.archapp.ui.driver.DriverListViewModel
@@ -49,39 +49,12 @@ class DriverListAdapter(
         private val binding: ListItemDriverBinding,
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(driver: Driver) {
+            val team = F1Team.getF1TeamByName(driver.teamName ?: "")
             binding.lastNameTv.text = driver.lastName
             binding.teamTv.text = driver.teamName
-            binding.teamBackgroundView.background = AppCompatResources.getDrawable(binding.root.context, getTeamColor(driver.teamName))
-            binding.teamLogoIv.setImageResource(getTeamLogo(driver.teamName))
+            binding.teamBackgroundView.background = AppCompatResources.getDrawable(binding.root.context, team.teamColor)
+            binding.teamLogoIv.setImageResource(team.teamLogo)
             binding.avatarIv.load(driver.headshotUrl)
-        }
-
-        private fun getTeamColor(teamName: String?): Int  = when (teamName) {
-            "Red Bull Racing" -> R.drawable.bg_team_red_bull
-            "Ferrari" -> R.drawable.bg_team_ferrari
-            "McLaren" -> R.drawable.bg_team_mclaren
-            "Mercedes" -> R.drawable.bg_team_mercedes
-            "Aston Martin" -> R.drawable.bg_team_aston_martin
-            "RB" -> R.drawable.bg_team_rb
-            "Alpine" -> R.drawable.bg_team_alpine
-            "Williams" -> R.drawable.bg_team_williams
-            "Kick Sauber" -> R.drawable.bg_team_kick_sauber
-            "Haas F1 Team", null -> R.drawable.bg_team_haas
-            else -> R.drawable.bg_team_haas
-        }
-
-        private fun getTeamLogo(teamName: String?): Int  = when (teamName) {
-            "Red Bull Racing" -> R.drawable.ic_team_logo_red_bull
-            "Ferrari" -> R.drawable.ic_team_logo_ferrari
-            "McLaren" -> R.drawable.ic_team_logo_mclaren
-            "Mercedes" -> R.drawable.ic_team_logo_mercedes
-            "Aston Martin" -> R.drawable.ic_team_logo_aston_martin
-            "RB" -> R.drawable.ic_team_logo_rb
-            "Alpine" -> R.drawable.ic_team_logo_alpine
-            "Williams" -> R.drawable.ic_team_logo_williams
-            "Kick Sauber" -> R.drawable.ic_team_logo_kick_sauber
-            "Haas F1 Team", null -> R.drawable.ic_team_logo_haas
-            else -> R.drawable.bg_team_haas
         }
 
     }
