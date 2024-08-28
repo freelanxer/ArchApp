@@ -19,7 +19,7 @@ android {
         applicationId = "com.freelanxer.archapp"
         minSdk = 24
         targetSdk = 34
-        versionCode = 2
+        versionCode = 3
         versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -38,6 +38,14 @@ android {
                 releaseNotesFile = "appDistribution/releaseNotes.txt"
             }
         }
+        debug {
+            firebaseAppDistribution {
+                artifactType = "APK"
+                groups = "AndroidTestGroup"
+                releaseNotesFile = "appDistribution/releaseNotes.txt"
+            }
+        }
+
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
