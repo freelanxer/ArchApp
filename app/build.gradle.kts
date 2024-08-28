@@ -35,7 +35,7 @@ android {
             firebaseAppDistribution {
                 artifactType = "APK"
                 groups = "AndroidTestGroup"
-                releaseNotesFile = "../appDistribution/releaseNotes.txt"
+                releaseNotesFile = "appDistribution/releaseNotes.txt"
             }
         }
     }
