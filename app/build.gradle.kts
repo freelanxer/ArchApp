@@ -3,7 +3,7 @@ import com.google.firebase.appdistribution.gradle.firebaseAppDistribution
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    id("org.jetbrains.kotlin.kapt")
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
     // Add the App Distribution Gradle plugin
