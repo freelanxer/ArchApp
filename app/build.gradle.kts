@@ -31,11 +31,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            firebaseAppDistribution {
-                artifactType = "APK"
-                groups = "AndroidTestGroup"
-                releaseNotesFile = "../appDistribution/releaseNotes.txt"
-            }
+//            firebaseAppDistribution {
+//                artifactType = "APK"
+//                groups = "AndroidTestGroup"
+//                releaseNotesFile = "../appDistribution/releaseNotes.txt"
+//            }
         }
     }
     compileOptions {
