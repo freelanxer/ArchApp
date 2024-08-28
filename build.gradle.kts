@@ -9,4 +9,5 @@ plugins {
     // Add the dependency for the App Distribution Gradle plugin
     id("com.google.firebase.appdistribution") version "5.0.0" apply false
     id("org.jetbrains.kotlin.kapt") version "1.9.10" apply false
+//    id("com.google.devtools.ksp") version "1.9.10" apply false
 }

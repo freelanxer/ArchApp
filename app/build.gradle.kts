@@ -3,7 +3,8 @@ import com.google.firebase.appdistribution.gradle.firebaseAppDistribution
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
+    id("kotlin-kapt")
+//    id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
     // Add the App Distribution Gradle plugin
@@ -75,7 +76,7 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
+//    kspAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
     // Coil
     implementation("io.coil-kt:coil:2.6.0")
     // Firebase
@@ -84,6 +85,6 @@ dependencies {
 }
 
 // Allow references to generated code
-kapt {
-    correctErrorTypes = true
-}
+//kapt {
+//    correctErrorTypes = true
+//}
