@@ -62,15 +62,15 @@ dependencies {
     // UI
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     // retrofit
-    implementation("com.squareup.retrofit2:converter-moshi:${project.ext.get("retrofitVersion")}")
-    implementation("com.squareup.moshi:moshi:${project.ext.get("moshiVersion")}")
-    implementation("com.squareup.moshi:moshi-kotlin:${project.ext.get("moshiVersion")}")
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:${project.ext.get("moshiVersion")}")
-    implementation("com.squareup.okhttp3:logging-interceptor:${project.ext.get("okhttpInterceptorVersion")}")
-    implementation("com.github.bumptech.glide:glide:${project.ext.get("glid")}") {
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation("com.squareup.moshi:moshi:1.11.0")
+    implementation("com.squareup.moshi:moshi-kotlin:1.11.0")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.11.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation("com.github.bumptech.glide:glide:4.11.0") {
         exclude("com.android.support")
     }
-    implementation ("androidx.activity:activity-ktx:${project.ext.get("activityKtxVersion")}")
+    implementation ("androidx.activity:activity-ktx:1.2.0-rc01")
     // Hilt
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
