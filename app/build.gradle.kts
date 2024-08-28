@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -68,6 +69,9 @@ dependencies {
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
     // Coil
     implementation("io.coil-kt:coil:2.6.0")
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
+    implementation("com.google.firebase:firebase-analytics")
 }
 
 // Allow references to generated code
