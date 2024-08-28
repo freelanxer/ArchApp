@@ -1,9 +1,13 @@
+import com.google.firebase.appdistribution.gradle.firebaseAppDistribution
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
+    // Add the App Distribution Gradle plugin
+    id("com.google.firebase.appdistribution")
 }
 
 android {
@@ -21,12 +25,17 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            firebaseAppDistribution {
+                artifactType = "APK"
+                groups = "AndroidTestGroup"
+                releaseNotesFile = "../appDistribution/releaseNotes.txt"
+            }
         }
     }
     compileOptions {
