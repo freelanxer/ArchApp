@@ -74,7 +74,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
     implementation("com.squareup.moshi:moshi:1.11.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.11.0")
-    annotationProcessor("com.squareup.moshi:moshi-kotlin-codegen:1.11.0")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
     implementation("com.github.bumptech.glide:glide:4.11.0") {
         exclude("com.android.support")
@@ -82,7 +82,7 @@ dependencies {
     implementation ("androidx.activity:activity-ktx:1.2.0-rc01")
     // Hilt
     implementation("com.google.dagger:hilt-android:2.48")
-    annotationProcessor("com.google.dagger:hilt-compiler:2.48")
+    kapt("com.google.dagger:hilt-compiler:2.48")
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
 //    kspAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
     // Coil
