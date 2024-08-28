@@ -73,8 +73,8 @@ dependencies {
     }
     implementation ("androidx.activity:activity-ktx:1.2.0-rc01")
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-compiler:2.48")
+    implementation("com.google.dagger:hilt-android:2.49")
+    kapt("com.google.dagger:hilt-compiler:2.49")
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
 //    kspAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
     // Coil
