@@ -1,13 +1,13 @@
 import com.google.firebase.appdistribution.gradle.firebaseAppDistribution
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
-    id("com.google.gms.google-services")
-    // Add the App Distribution Gradle plugin
-    id("com.google.firebase.appdistribution")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.jetbrainsKotlin)
+    alias(libs.plugins.kapt)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.google.service)
+    // AppDistribution
+    alias(libs.plugins.app.distribution)
 }
 
 android {
@@ -25,7 +25,7 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -37,14 +37,6 @@ android {
                 releaseNotesFile = "appDistribution/releaseNotes.txt"
             }
         }
-        debug {
-            firebaseAppDistribution {
-                artifactType = "APK"
-                groups = "AndroidTestGroup"
-                releaseNotesFile = "appDistribution/releaseNotes.txt"
-            }
-        }
-
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -60,35 +52,35 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
     // UI
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation(libs.androidx.swiperefreshlayout)
     // retrofit
-    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
-    implementation("com.squareup.moshi:moshi:1.11.0")
-    implementation("com.squareup.moshi:moshi-kotlin:1.11.0")
-//    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.11.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation(libs.converter.moshi)
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin)
+    kapt(libs.moshi.kotlin.codegen)
+    implementation(libs.logging.interceptor)
     implementation("com.github.bumptech.glide:glide:4.11.0") {
         exclude("com.android.support")
     }
-    implementation ("androidx.activity:activity-ktx:1.2.0-rc01")
+    implementation (libs.androidx.activity.ktx)
     // Hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.48")
-//    kspAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.android.compiler)
     // Coil
-    implementation("io.coil-kt:coil:2.6.0")
+    implementation(libs.coil)
     // Firebase
-    implementation(platform("com.google.firebase:firebase-bom:33.2.0"))
-    implementation("com.google.firebase:firebase-analytics")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
 }
 
 // Allow references to generated code
