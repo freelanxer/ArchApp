@@ -1,3 +1,4 @@
-ArchApp new version update
+ArchApp Release notes 8/29
 
-2024/08/28 Jenkins upload test
+1. Use Version Catalog.
+2. Sign app uploading key.

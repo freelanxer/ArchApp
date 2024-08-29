@@ -1,4 +1,6 @@
 import com.google.firebase.appdistribution.gradle.firebaseAppDistribution
+import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.androidApplication)
@@ -18,10 +20,25 @@ android {
         applicationId = "com.freelanxer.archapp"
         minSdk = 24
         targetSdk = 34
-        versionCode = 3
+        versionCode = 4
         versionName = "1.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    val keystoreFile = rootProject.file("./keystore.properties")
+    val keystoreProperties = Properties()
+
+    signingConfigs {
+        create("release") {
+            if (keystoreFile.exists()) {
+                keystoreProperties.load(FileInputStream(keystoreFile))
+                storeFile = keystoreProperties["storeFile"]?.let { file(it) }
+                storePassword = keystoreProperties["storePassword"]?.toString()
+                keyAlias = keystoreProperties["keyAlias"]?.toString()
+                keyPassword = keystoreProperties["keyPassword"]?.toString()
+            }
+        }
     }
 
     buildTypes {
@@ -31,6 +48,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
             firebaseAppDistribution {
                 artifactType = "APK"
                 groups = "AndroidTestGroup"
